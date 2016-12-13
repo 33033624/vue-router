@@ -6,11 +6,14 @@
 ``<router-link to="/c"><div class="title">待评价</div></router-link>``
 
 
+
 嵌套路由
 ``  var ViewC = {template:"<div class='c'>" +
       "<nav class='detail2'>1</nav>" +
       "<nav class='detail2'>2</nav>" +
       "<nav class='detail2'><router-link to='/c/d'>跳转到组件D</router-link></nav>" +
       "</div>"};``
+      
+      
  <img src='./1.png'/>
 
