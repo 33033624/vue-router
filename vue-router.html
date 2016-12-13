@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0 ;
+            padding: 0;
+
+        }
+        html{
+            font-size: 100px;
+        }
+        html，body{
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-size: 0.14rem;
+            color:#333;
+        }
+        #app{
+            height: 100%;
+        }
+        #app>p{
+            height: 100%;
+        }
+        .a{
+            width: 90%;
+            margin: 0 auto;
+            height:100%;
+
+        }
+        .b{
+            width: 90%;
+            margin: 0 auto;
+            height:100%;
+        background:yellow;
+        }
+        .c{
+            width: 90%;
+            margin: 0 auto;
+            height:100%;
+            background:green;
+        }
+        .noBuy{
+            font-size: 100px;
+        }
+        .firTitle{
+            height: 100%;
+            margin: 0 8%;
+
+        }
+        .title{
+
+            display: inline-block;
+            width: 33%;
+            height: .6rem;
+            text-align: center;
+            font-size: .3rem;
+            color:white;
+            background: lightgray;
+            line-height: .6rem;
+        }
+        .detail,.detail1,.detail2{
+          width: 100%;
+            height: 1rem;
+            margin-top: .4rem;
+            color:black;
+            font-size: .4rem;
+            background-color: darkgray;
+            line-height: 1rem;
+
+
+         }
+        .detail1{
+            background-color: red;
+        }
+        .detail2{
+            background-color: yellow;
+        }
+
+
+
+    </style>
+</head>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<body>
+
+<div id="app">
+    <h1 style="text-align: center;background-color: lightgreen;margin-top: 0;font-size: 1rem">我的账单</h1>
+
+         <div class="firTitle">
+             <!--
+             router-link实现跳转  里面外面可以用标签包裹
+             -->
+    <router-link to="/a"><div class="title">待付款</div></router-link>
+    <router-link to="/b"><div class="title">待收货</div></router-link>
+    <router-link to="/c"><div class="title">待评价</div></router-link>
+
+</div>
+
+
+
+        <!--
+        router-view是战士对应的组件内容区域的
+        -->
+        <router-view></router-view>
+
+</div>
+
+</body>
+</html>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+    $(function(){
+        var windW = screen.width;
+        document.documentElement.clientWidth=windW+'px';
+        document.body.clientWidth=windW+'px';
+        document.documentElement.style.fontSize=100*windW/320+'px';
+    })
+
+</script>
+<script>
+
+
+
+
+    var ViewA = {template:"<div class='a'>" +
+    "<nav class='detail'>1</nav>" +
+    "<nav class='detail'>2</nav>" +
+    "<nav class='detail'>3</nav>" +
+    "</div>"};
+
+
+    var ViewB = {template:"<div class='b'>" +
+    "<nav class='detail1'>1</nav>" +
+    "<nav class='detail1'>2</nav>" +
+    "<nav class='detail1'>3</nav>" +
+    "</div>"}
+    var ViewC = {template:"<div class='c'>" +
+    "<nav class='detail2'>1</nav>" +
+    "<nav class='detail2'>2</nav>" +
+    "<nav class='detail2'>3</nav>" +
+    "</div>"}
+
+
+
+    const routes = [
+        { path: '/a', component: ViewA },
+        { path: '/b', component: ViewB },
+        { path: '/c', component: ViewC }
+    ]
+
+
+
+    // 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = new VueRouter({
+        routes
+    })
+
+    //  创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+    const app = new Vue({
+        router
+    }).$mount('#app')
+
+
+
+</script>
